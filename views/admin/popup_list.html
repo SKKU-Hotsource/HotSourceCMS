@@ -1,0 +1,30 @@
+<div ng-init="loadPopupList()">
+	<table class="table table-hover">
+		<thead>
+			<tr>
+				<th>번호</th><th>제목</th><th>시작일</th><th>종료일</th><th></th>
+			</tr>
+		</thead>
+		<tbody>
+			<tr ng-repeat="popup in popupList">
+				<td>{{popup.id}}</td>
+				<td>{{popup.title}}</td>
+				<td>{{popup.startDate}}</td>
+				<td>{{popup.endDate}}</td>
+				<td width="100">
+					<div class="btn-group" role="group">
+						<a class="btn btn-primary btn-xs" href="./admin#/popup/modify/{{popup.id}}">
+							<span class="glyphicon glyphicon-pencil"></span>
+						</a>
+						<button class="btn btn-danger btn-xs" ng-click="deletePopup(popup.id)">
+							<span class="glyphicon glyphicon-remove"></span>
+						</button>
+					</div>
+				</td>
+			</tr>
+		</tbody>
+	</table>
+	<div class="col-md-offset-11 col-md-1">
+		<a class="btn btn-default" href="./admin#/popup/add">팝업 등록</a>
+	</div>
+</div>

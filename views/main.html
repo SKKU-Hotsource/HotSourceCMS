@@ -1,0 +1,52 @@
+<script type="text/javascript-lazy" src="/assets/js/jquery.min.js"></script>
+<script type="text/javascript-lazy" src="/assets/js/jquery.cookie.js"></script>
+<script type="text/javascript-lazy" src="/assets/js/jquery.bxslider.min.js"></script>
+<script type="text/javascript-lazy" src="/assets/js/jquery.mixitup.min.js"></script>
+<script type="text/javascript-lazy" src="/assets/js/jquery.matchHeight-min.js"></script>
+<script type="text/javascript-lazy" src="/assets/js/wow.min.js"></script>
+<script type="text/javascript-lazy" src="/assets/js/DropdownHover.js"></script>
+<script type="text/javascript-lazy" src="/assets/js/holder.js"></script>
+
+<div ng-init="initMain()">
+    <div ng-controller="SlideCtrl" ng-if="mainAdmin.useSlide">
+        <main-slide slide-posts="slidePosts" slides="slides"></main-slide>
+    </div>
+    <div class="container">
+        <div class="row">
+            <div class="col-md-12">
+                <hr>
+                <div class="col-md-12" ng-if="!mainAdmin.rightBoard">
+                    <main-board board-post-list="leftBoardList" board-name="leftBoardName" ng-if="mainAdmin.leftBoard"></main-board>
+                </div>
+                <div ng-if="mainAdmin.rightBoard">
+                    <div class="col-md-6">
+                        <main-board board-post-list="leftBoardList" board-name="leftBoardName"></main-board>
+                    </div>
+                    <div class="col-md-6">
+                        <main-board board-post-list="rightBoardList" board-name="rightBoardName"></main-board>
+                    </div>
+                </div>
+                <hr>
+                <div ng-include="'/views/body.html'"></div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div ng-repeat="popup in popupList" id="popup{{$index}}" class="panel panel-default" style="z-index: 100; position: absolute; top: {{100+$index*50}}px; left: {{100+$index*50}}px;">
+    <div class="panel-body" style="margin:0; padding:0; width:{{popup.width}}px; height:{{popup.height}}px;">
+        <a href="{{popup.path}}"><image src="{{popup.image_src}}"></image></a>
+    </div>
+    <div class="panel-footer">
+        <div class="form-inline">
+            <div class="checkbox">
+                <input type="checkbox" id="popup_checkbox{$index+1}" ng-model="checkbox[$index]" ng-change="closePopupDay($index, popup.id)" />
+                <label for="popup_checkbox{$index+1}">
+                    오늘 하루 보지 않기
+                </label>
+            </div>
+            <button class="btn btn-ar btn-sm btn-default" ng-click="closePopup($index, popup.id)" style="float: right;"> 닫기 </button>
+        </div>
+    </div>
+</div>
+

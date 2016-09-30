@@ -1,0 +1,45 @@
+<div class="col-md-12 container" ng-init = "initlist()">
+    <table class="table table-striped" ng-model="SlidePostList">
+        <colgroup>
+            <col style="width: 30%">
+            <col style="width: 30%">
+            <col style="width: 10%">
+            <col style="width: 10%">
+            <col style="width: 20%">
+        </colgroup>
+        <thead>
+            <tr>
+                <th scope="col" nowrap>제목</th>
+                <th scope="col" nowrap>link</th>
+                <th scope="col" nowrap>seq</th>
+                <th scope="col" nowrap>show</th>
+                <th scope="col" nowrap>일자</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr ng-repeat="SlidePost in SlidePostList">
+                <td><strong>{{SlidePost.title}}</strong><br>
+                    <a class="submitdelete" id="delBtn{{SlidePost.id}}" ng-click="sdelete(SlidePost.id, SlidePost.seq)">휴지통</a>
+                </td>
+                <td>{{SlidePost.link}}</td>
+                <td>
+                    <select name = "seqSelect{{SlidePost.id}}" ng-model = "SlidePostList[$index].seq" id = "seqSelect{{SlidePost.id}}" ng-change ="seqsave(SlidePost.id, SlidePost.seq)"> 
+                        <option ng-repeat ="sequ in seqs" value = "{{sequ.seq}}">{{sequ.seq}}</option>
+                    </select>
+                </td>
+                <td>
+                    <select name = "showSelect{{SlidePost.id}}" ng-model = "SlidePostList[$index].show" id = "showSelect{{SlidePost.id}}" ng-change ="showsave(SlidePost.id, SlidePost.show, SlidePost.seq)"> 
+                        <option value = "1">YES</option>
+                        <option value = "0">NO</option>
+                    </select>
+                </td>
+                <td>{{SlidePost.updatedAt}}</td>
+            </tr>
+        </tbody>  
+    </table>
+    <div class="form-group" >
+        <div class="col-sm-8" align="right" style="float:right;margin:10px 0px 0px 30px;">
+            <a class="btn btn-success" href="/admin#/slide/add">add slide</a>
+        </div>
+    </div>
+</div>

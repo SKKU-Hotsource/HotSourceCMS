@@ -1,0 +1,187 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <title><%=title%></title>
+    <meta name="description" content="">
+    <!-- preload가 제일 먼저 호출되야 못생긴 모양이 안나옴-->
+    <link href="/assets/css/preload.css" rel="stylesheet">
+
+    <!-- CSS -->
+    <link rel="shortcut icon" href="/favicon.ico">
+    <link href="../stylesheets/style.css" rel="stylesheet">
+    <link href="../assets/css/bootstrap.min.css" rel="stylesheet">
+    <link href="../assets/css/bootstrap-switch.min.css" rel="stylesheet">
+    <link href="../assets/css/font-awesome.min.css" rel="stylesheet">
+    <link href="../assets/css/animate.min.css" rel="stylesheet">
+    <link href="../assets/css/slidebars.min.css" rel="stylesheet">
+    <link href="../assets/css/lightbox.css" rel="stylesheet">
+    <link href="../assets/css/jquery.bxslider.css" rel="stylesheet">
+    <link href="../assets/css/buttons.css" rel="stylesheet">
+    <link href="../assets/css/syntaxhighlighter/shCore.css" rel="stylesheet">
+    <link href="../assets/css/style-blue.css" rel="stylesheet" title="default">
+    <link href="../assets/css/width-full.css" rel="stylesheet" title="default">
+    <link rel="stylesheet" href="source_tree/angular-ui-tree.css">
+    <link rel="stylesheet" href="css/ui_tree/app.css">
+    <link rel="stylesheet" href="bower_components/angular-ui-tree/dist/angular-ui-tree.min.css">
+</head>
+
+<!-- Preloader -->
+<div id="preloader">
+    <div id="status">&nbsp;</div>
+</div>
+
+<body ng-app="adminApp">
+
+<div class="sb-site-container">
+    <div class="boxed">
+        <div ng-include="'/views/nav.html'" ng-if="1"></div> 
+        <header class="main-header">
+            <div class="container" ng-controller="HeaderController">
+                <h1 class="page-title">Admin</h1>
+                <ol class="breadcrumb pull-right">
+                    <li>
+                        <a class="aa">Admin</a>
+                    </li>
+                </ol>
+            </div>
+        </header>
+
+        <div class="container" >
+            <div class="row" ng-controller="SubNavController">
+                <div class="col-md-3">
+                    <ul class="sidebar-nav animated fadeIn">
+                        <li>
+                            <a href="/admin#/" class="collapsed">메인페이지 관리</a>
+                        </li>
+                        <li>
+                            <a ng-click="isClicked=isClicked!=true" ng-class="isClicked ? '' : 'collapsed'">게시판 관리</a>
+                            <ul ng-show="isClicked" class="menu-submenu list-unstyled">
+                                <li ng-repeat ="data in res">
+                                    <a href="/admin#/{{data.typeString}}/{{data.id}}/list/" ng-if="data.type!=0">{{data.title}}</a>
+                                    <a ng-if="data.type==0">{{data.title}}</a>
+                                    </li>
+                            </ul>
+                        </li>
+                        <li>
+                            <a href="/admin#/category" class="collapsed">카테고리 관리</a>
+                            <ul id="coll-icons" class="menu-submenu list-unstyled collapse">          
+                            </ul>        
+                        </li>
+                        <li>
+                            <a href="/admin#/slide/list" class="collapsed">슬라이드 관리</a>      
+                        </li>
+                        <li>
+                            <a data-toggle="collapse" href="/admin#/user" class="collapsed">회원 관리</a>      
+                        </li>
+                        <li>     
+                            <a data-toggle="collapse" href="/admin#/popup" class="collapsed">팝업 관리</a>    
+                        </li>
+                    </ul>
+                </div>
+                <div class ="col-md-9">
+                    <div ng-view></div>
+                </div>
+            </div>
+        </div>
+        <div ng-include="'/views/footer.html'" ng-if="1"></div>
+    </div> <!-- boxed -->
+</div> <!-- sb-site -->
+
+<div id="back-top">
+    <a href="#header"><i class="fa fa-chevron-up"></i></a>
+</div>
+
+<!-- TO USE CUSTOM ALERT -->
+<div id = 'dialogbox'></div>
+<style>
+    #dialogbox{
+        display: none;
+        position: fixed; 
+        font-size: 17px;
+        width:30%;
+        margin: 0;
+        z-index: 10;
+    }
+</style>
+<!-- TO USE CUSTOM ALERT -->
+<!--js-->   
+    <!-- jQuery script가 angularjs보다 먼저 호출되야 함-->
+    <script src="/assets/js/jquery.min.js"></script>
+    <script src="/assets/js/jquery.cookie.js"></script>
+    <script src="/assets/js/jquery.bxslider.min.js"></script>
+    <script src="/assets/js/jquery.mixitup.min.js"></script>
+    <script src="/assets/js/jquery.matchHeight-min.js"></script>
+    <script src="/assets/js/imagesloaded.pkgd.min.js"></script>
+    <script src="/assets/js/bootstrap.min.js"></script>
+    <script src="/assets/js/bootstrap-switch.min.js"></script>
+    <script src="/assets/js/wow.min.js"></script>
+    <script src="/assets/js/slidebars.min.js"></script>
+    <script src="/assets/js/buttons.js"></script>
+    <script src="/assets/js/circles.min.js"></script>
+    <script src="/assets/js/masonry.pkgd.min.js"></script>
+    <script src="/assets/js/styleswitcher.js"></script>
+
+    <!-- Syntaxhighlighter -->
+    <script src="/assets/js/syntaxhighlighter/shCore.js"></script>
+    <script src="/assets/js/syntaxhighlighter/shBrushXml.js"></script>
+    <script src="/assets/js/syntaxhighlighter/shBrushJScript.js"></script>
+    <script src="/assets/js/DropdownHover.js"></script>
+    <script src="/assets/js/app.js"></script>
+    <script src="/assets/js/holder.js"></script>
+
+    <!--angular-->
+    <script src="/bower_components/angular/angular.min.js"></script>
+    <script src="/bower_components/angular-route/angular-route.min.js"></script>
+    <script src="/bower_components/ng-file-upload/ng-file-upload.min.js"></script>
+    <script src="/bower_components/ng-file-upload/ng-file-upload-shim.min.js"></script>
+    <script src="/bower_components/angular-cookies/angular-cookies.js"></script>
+    
+    <!-- video -->
+    <script src="/bower_components/angular-sanitize/angular-sanitize.min.js"></script>
+    <script src="/bower_components/videogular/videogular.js"></script>
+    <script src="/bower_components/videogular-controls/vg-controls.js"></script>
+    <script src="/bower_components/videogular-overlay-play/vg-overlay-play.js"></script>
+    <script src="/bower_components/videogular-poster/vg-poster.js"></script>
+    <script src="/bower_components/videogular-buffering/vg-buffering.js"></script>
+    <!-- tree -->
+    <!--<link rel="stylesheet" href="source_tree/angular-ui-tree.css">
+    <link rel="stylesheet" href="css/ui_tree/app.css">-->
+
+    <script src="source_tree/main.js"></script>
+    <script src="source_tree/controllers/handleCtrl.js"></script>
+    <script src="source_tree/controllers/nodeCtrl.js"></script>
+    <script src="source_tree/controllers/nodesCtrl.js"></script>
+    <script src="source_tree/controllers/treeCtrl.js"></script>
+    <script src="source_tree/directives/uiTree.js"></script>
+    <script src="source_tree/directives/uiTreeHandle.js"></script>
+    <script src="source_tree/directives/uiTreeNode.js"></script>
+    <script src="source_tree/directives/uiTreeNodes.js"></script>
+    <script src="source_tree/services/helper.js"></script>
+    <script type="text/javascript" src="bower_components/angular-ui-tree/dist/angular-ui-tree.js"></script>
+    <script src="bower_components/angular-bootstrap/ui-bootstrap-tpls.js"></script>
+    <!--<script src="js/ui_tree/app.js"></script>
+    <script src="js/ui_tree/sosc_tree.js"></script>-->
+
+    <!-- module js -->
+    <script src="/javascripts/core/adminCore.js"></script>
+    <script src="/javascripts/controllers/UserCtrl.js"></script>
+    <script src="/javascripts/controllers/MainAdminCtrl.js"></script>
+    <script src="/javascripts/controllers/UserCtrl.js"></script>
+    <script src="/javascripts/controllers/SlideCtrl.js"></script>
+    <script src="/javascripts/controllers/MainSlideCtrl.js"></script>
+    <script src="/javascripts/controllers/PopupCtrl.js"></script>
+    <script src="/javascripts/controllers/VideoCtrl.js"></script>
+    <script src="/javascripts/controllers/BoardCtrl.js"></script>
+    <script src="/javascripts/controllers/PaperCtrl.js"></script>
+    <script src="/javascripts/controllers/CategoryCtrl.js"></script>
+    <script src="/javascripts/controllers/LoginCtrl.js"></script>
+    <script src="/javascripts/controllers/HeaderCtrl.js"></script>
+    <script src="/javascripts/controllers/NavListCtrl.js"></script>
+    <script src="/javascripts/controllers/SlideNavCtrl.js"></script>
+    <script src="/javascripts/directives/adminPaper.js"></script>
+    <script src="/javascripts/directives/tag.js"></script>
+</body>
+</html>

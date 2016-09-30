@@ -1,0 +1,38 @@
+<script type="text/javascript" src="/js/board/ckeditor/ckeditor.js"></script>
+
+<div class="sb-site-container">
+    <div class="boxed">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-9" ng-init="initModify()">
+                    <section class="css-section">
+                        <h2 class="section-title no-margin-top">수정하기</h2>
+                        <div class = "container-fluid " width = "100%" padding-left = "0px" padding-right ="0px">
+                            <form accept-charset="UTF-8" class = "form horizontal" ng-submit="updatedPost(attachment)" name="myForm">
+                                <div class = "form-group">
+                                    <label class ="col-sm-2" style ="text-align:center">제 목</label>
+                                    <div class ="col-sm-10" >
+                                        <input type ="text" class = "form-control" ng-model = "title" name = "title"  required/>
+                                    </div>
+                                </div>
+                                <div class = "form-group">                  
+                                    <div class = "col-sm-10" align = "relative">
+                                        <input type ="file"  ngf-select ng-model="attachment" ngf-multiple="false" name="file" accept="image/*" ngf-max-size="100MB">
+                                    </div>
+                                     <label class = "col-sm-6 control-label" style ="text-align:left">첨부파일(기존파일은 삭제됩니다)</label>
+                                </div>
+                                <div class ="col-sm-12">
+                                    <textarea id="text_editor" ck-editor ng-model="contents" name = "contents"></textarea>
+                                    <span class="progress" ng-show="attachment.progress >= 0">
+                                        <div style="width:{{attachment.progress}}%" ng-bind="attachment.progress + '%'" class="ng-binding"></div>
+                                    </span>
+                                    <button  style ="float:right; margin-top : 10px" class="btn btn-info" type="submit">Submit</button>
+                                </div>
+                            </form>
+                        </div>
+                    </section>
+                </div>
+            </div>
+        </div>
+    </div> 
+</div> 

@@ -1,0 +1,27 @@
+<style>
+	a, a:visited, a:hover, a:active {
+		color: inherit;
+		text-decoration:none
+	}
+</style>
+<div class="table-responsive" ng-controller="paperCtrl">
+	<table class="table table-hover table-condensed table-responsive" >
+		<colgroup>
+			<col style="width: 85%">
+			<col style="width: 15%">
+		</colgroup>
+		<tr ng-repeat="paperStr in paperList">
+			<td>
+				{{paperStr.author}}, <a ng-href="{{paperStr.url}}" target="_blank"><b>"{{paperStr.title}}"</b></a>, <i>{{paperStr.publication_name}}</i>, {{paperStr.index}}, {{paperStr.publish_date}} 
+			</td>
+			<td>
+				<a class="btn btn-primary btn-xs" ng-href="/admin#/paper/{{paperStr.CategoryId}}/modify/{{paperStr.id}}">
+					<span class="glyphicon glyphicon-pencil"></span>
+				</a>
+				<button class="btn btn-danger btn-xs" ng-click="deletePaper(paperStr.id)">
+					<span class="glyphicon glyphicon-remove"></span>
+				</button>
+			</td>
+		</tr>
+	</table>
+</div>

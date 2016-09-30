@@ -1,0 +1,56 @@
+<div class="col-md-12 container" ng-init="initList()" >
+    검색:
+    <input type="text" value="title" ng-model="searchKeyword" placeholder="Search for..." required  />
+
+    
+    <table class="table table-striped" ng-model="videoPostList" >
+        <colgroup>
+            <col style="width: 17%">
+            <col style="width: 36%">
+            <col style="width: 17%">
+            <col style="width: 10%">
+            <col style="width: 20%">
+        </colgroup>
+        <thead>
+            <tr>
+                <th nowrap>
+                    <label for="cb-select-all-1">모두 선택</label>
+                    <input id="cb-select-all-1" type="checkbox" ng-change="checkAll(checkedAll)" ng-model="checkedAll" />
+                </th>
+                    <th scope="col" nowrap><span ng-click="sortBy('title')" >제목</span></th>
+                    <th scope="col" nowrap><span ng-click="sortBy('author')">작성자</span></th>
+                    <th scope="col" nowrap><span ng-click="sortBy('cnt')">조회수</span></th>
+                    <th scope="col" nowrap><span ng-click="sortBy('time')">작성시간</span></th>
+            </tr>
+        </thead>
+        <tbody id="the-list">
+            <tr ng-repeat="videoPost in videoPostList | filter:searchKeyword | offset: currentPage*itemsPerPage | limitTo: itemsPerPage" >
+                <td scope="row">
+                    <input type="checkbox"  ng-change="checkItem(videoPost.id, videoPost.selected)" ng-model="videoPost.selected" /> 
+                </td>
+                <td>
+                    <strong><a class="row-title" href="admin#/video/{{categoryId}}/view/{{videoPost.id}}">{{videoPost.title}}</a></strong><br>
+                    <a href="admin#/video/{{categoryId}}/modify/{{videoPost.id}}">편집</a>  | 
+                    <a href="admin#/video/{{categoryId}}/list"  ng-click="delete(videoPost.id)">휴지통</a> |
+                    <a href="admin#/video/{{categoryId}}/view/{{videoPost.id}}">보기</a>
+                </td>
+                <td>{{videoPost.author}}</td>
+                <td>{{videoPost.cnt}}</td>
+                <td>{{videoPost.time}}</td>
+            </tr>
+        </tbody>
+    </table>
+    <div class="form-group" >
+        <div class="col-sm-8" align="right" style="float:right;margin:10px 0px 0px 30px;">
+            <a class="btn btn-default" ng-click="deleteSelect()">선택삭제</a>
+            <a class="btn btn-success" href="admin#/video/{{categoryId}}/write">글쓰기</a>
+        </div>
+    </div>
+    <div class="form-group">
+        <ul class="pagination pagination-border">
+            <li> <a href ng-click = "prevPage()">« Previous</a></li>
+            <li><a ng-repeat="n in range(ret)" ng-click="setPage(n)" href="admin#/video/{{categoryId}}/list"> {{n+1}} </a></li>
+            <li><a href ng-click = "nextPage()">Next »</a></li>
+        </ul>
+    </div>
+</div>

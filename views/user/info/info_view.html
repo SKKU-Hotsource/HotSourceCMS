@@ -1,0 +1,19 @@
+<script type="text/javascript-lazy" src="/assets/js/jquery.min.js"></script>
+<script type="text/javascript-lazy" src="/assets/js/jquery.cookie.js"></script>
+<script type="text/javascript-lazy" src="/assets/js/jquery.bxslider.min.js"></script>
+<script type="text/javascript-lazy" src="/assets/js/jquery.mixitup.min.js"></script>
+<script type="text/javascript-lazy" src="/assets/js/jquery.matchHeight-min.js"></script>
+<script type="text/javascript-lazy" src="/assets/js/wow.min.js"></script>
+<script type="text/javascript-lazy" src="/assets/js/DropdownHover.js"></script>
+<script type="text/javascript-lazy" src="/assets/js/holder.js"></script>
+
+<div ng-include="'/views/header.html'"></div>
+<div class="container animated fadeInDown">
+    <div class="row" >
+        <!-- Side bar -->
+        <div ng-include="'/views/sidebar.html'"></div>
+        <div class="col-md-9" ng-init ="initInfoView()">
+        	<p ng-bind-html ="contents"></p>
+        </div>
+    </div>
+</div>

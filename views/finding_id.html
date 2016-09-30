@@ -1,0 +1,48 @@
+<header class="main-header">
+    <div class="container" ng-controller="HeaderController">
+        <h1 class="page-title">아이디 찾기</h1>
+        <ol class="breadcrumb pull-right">
+            <li>
+                <p class="aa">아이디 찾기</p>
+            </li>
+        </ol>
+    </div>
+</header>
+
+<div class="container">
+    <div class="row">
+        <div class="center-block logig-form">
+            <h2 class="section-title no-margin-top">아이디찾기</h2>
+
+            <div class="panel panel-primary animated fadeInDown" ng-hide="exist">
+                <div class="panel-body">
+                    <form role="form" ng-submit="findingId()">
+                        <div class="form-group">
+                            <label for="InputName">이름<sup>*</sup></label>
+                            <input type="text" class="form-control" ng-model="user_name">
+                        </div>
+                        <div class="form-group">
+                            <label for="InputEmail">이메일주소<sup>*</sup></label>
+                            <input type="text" class="form-control" ng-model="email">
+                        </div>
+                        <div class="row">
+                            <div class="col-md-8"></div>
+                            <div class="col-md-4">
+                                <button type="submit" class="btn btn-ar btn-primary pull-right">찾기</button>
+                            </div>
+                        </div>
+                    </form>
+                </div>
+            </div>
+            <div class="panel panel-primary animated fadeInDown" ng-show="exist">
+                <div class="panel-body">
+                    <form role="form" >
+                        <div class="form-group">
+                           아이디는 <b>{{id}}</b> 입니다.
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</div> <!-- container  -->

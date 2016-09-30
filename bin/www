@@ -1,0 +1,14 @@
+#!/usr/bin/env node
+
+var app = require('../app');
+var debug = require('debug')('sosc:server');
+var http = require('http');
+var config = require('../config/config.json')[process.env.NODE_ENV || "development"];
+var models = require("../models");
+
+app.set('port', config.port);
+
+models.sequelize.sync().then(function(){
+  http.createServer(app).listen(app.get('port'));
+  debug('Express server listening on port ' + app.get('port'));
+});

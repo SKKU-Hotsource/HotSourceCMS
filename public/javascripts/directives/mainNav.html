@@ -1,0 +1,26 @@
+
+
+<div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+    <ul class="nav navbar-nav navbar-right">
+        <!-- ng repeat으로 nav.js에 있는 json 읽어서 뿌림-->
+        <!--<a>{{tests.title}}</a>-->
+        <li ng-href="main#/{{nav.typeString}}/{{nav.id}}/list" ng-repeat="nav in navList" ng-class="{'dropdown':{{nav.nodes.length>0}}}"> 
+            <a ng-href="main#/{{nav.typeString}}/{{nav.id}}/list" ng-if="nav.nodes.length>0 && nav.type != 0" class="dropdown-toggle" data-toggle="dropdown" data-hover="dropdown">{{nav.title}}</a>
+            <a ng-if="nav.nodes.length>0 && nav.type == 0" class="dropdown-toggle" data-toggle="dropdown" data-hover="dropdown">{{nav.title}}</a>
+            <a ng-href="main#/{{nav.typeString}}/{{nav.id}}/list" ng-if="nav.nodes.length<1 && nav.type != 0">{{nav.title}}</a>
+            <a ng-if="nav.nodes.length<1 && nav.type == 0">{{nav.title}}</a>
+            <ul class="dropdown-menu dropdown-menu-left animated-2x animated fadeIn" ng-if="nav.nodes.length>0">
+                <li ng-repeat="subnav in nav.nodes" ng-class="{'dropdown-submenu':{{subnav.nodes.length>0}}}">
+                    <a ng-href="main#/{{subnav.typeString}}/{{subnav.id}}/list" ng-if="subnav.type != 0" ng-class="{'has_children':{{subnav.nodes.length>0}}}">{{subnav.title}}</a>
+                    <a ng-if="subnav.type == 0" ng-class="{'has_children':{{subnav.nodes.length>0}}}">{{subnav.title}}</a>
+                    <ul class="dropdown-menu dropdown-menu-left" ng-if="subnav.nodes.length>0">
+                        <li ng-repeat="subsubnav in subnav.nodes">
+                            <a ng-href="main#/{{subsubnav.typeString}}/{{subsubnav.id}}/list" ng-if="subsubnav.type != 0" class="has_childeren">{{subsubnav.title}}</a>
+                            <a ng-if="subsubnav.type == 0" class="has_childeren">{{subsubnav.title}}</a>
+                        </li>
+                    </ul>             
+                </li>
+            </ul>
+        </li>
+     </ul>             
+</div><!-- navbar-collapse -->

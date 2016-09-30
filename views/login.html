@@ -1,0 +1,46 @@
+<header class="main-header">
+    <div class="container" ng-controller="HeaderController">
+        <h1 class="page-title">Login</h1>
+        <ol class="breadcrumb pull-right">
+            <li>
+                <p class="aa">Login</p>
+            </li>
+        </ol>
+    </div>
+</header>
+
+ <div class="container">
+    <div class="row">
+        <div class="center-block logig-form">
+          <h2 class="section-title no-margin-top">회원이십니까?</h2>
+            <div class="panel panel-primary animated fadeInDown">
+            <div ng-init="logoutInterceptor()"></div>
+                <div class="panel-heading">로그인</div>
+                <div class="panel-body">
+                    <form role="form" name="login" id="login" ng-submit="loginSubmit()">
+                        <div class="form-group">
+                            <div class="input-group login-input">
+                                <span class="input-group-addon"><i class="fa fa-user"></i></span>
+                                <input type="text" class="form-control" ng-model="uid" placeholder="아이디">
+                            </div>
+                            <br>
+                            <div class="input-group login-input">
+                                <span class="input-group-addon"><i class="fa fa-lock"></i></span>
+                                <input type="password" class="form-control" ng-model="password" placeholder="비밀번호">
+                            </div>
+                            <br>
+                            <div class="input-group login-input" style="float:right;">
+                                <button type="submit" class="btn btn-ar btn-primary pull-right" >로그인</button>
+                            </div>
+                            <div style="margin-top:45px">
+                            </div>
+                            <a href="/main#/registry" class="btn btn-ar btn-success pull-right">회원가입</a>
+                            <a href="/main#/finding" class="btn btn-ar btn-warning">아이디/패스워드 찾기</a>
+                            <div class="clearfix"></div>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</div> <!-- container  -->

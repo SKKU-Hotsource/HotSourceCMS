@@ -1,0 +1,54 @@
+<div class="sb-site-container">
+    <div class="boxed">
+        <div class="col-md-12 container animated fadeInDown">
+            <form role="form" class="form-horizontal" ng-init ="initView()">
+                <table class="table">
+                    <colgroup>
+                        <col style="width: 12%">
+                        <col style="width: 25%">
+                        <col style="width: 13%">
+                        <col style="width: 25%">
+                        <col style="width: 15%">
+                        <col style="width: 10%">
+                    </colgroup>
+                    <tr>
+                        <td nowrap>제목</td>
+                        <td colspan="3">{{boardPost.title}}</td>
+                        <td nowrap>게시물 번호</td>
+                        <td>{{boardPost.id}}</td>
+                    </tr>
+                    <tr>
+                        <td nowrap>작성자</td>
+                        <td>{{boardPost.author}}</td>
+                        <td nowrap>작성시간</td>
+                        <td>{{boardPost.time}}</td>
+                        <td nowrap>조회</td>
+                        <td>{{boardPost.cnt}}</td>
+                    </tr>
+                    <tr>
+                        <td nowrap>첨부 파일</td>
+                        <td colspan="5">
+                            <a style="color: black" class="underline-on-hover" ng-click="download(boardPost.files[0].path)"><i class="fa fa-file-o" ></i> &nbsp;<b>{{boardPost.files[0].file_name}} ({{boardPost.files[0].size}})</b></a>
+                        </td>
+                    </tr>
+                    <tr><td colspan="6"></td></tr>
+                </table>
+                
+                <div class="form-group-separator"></div>
+
+                <div class="form-group" style="padding-left:15px;padding-right:15px;">
+                    <div ng-bind-html="boardPost.contents"></div>
+                </div>
+               
+                <div class="form-group">
+                    <div class="col-md-12" style="text-align:right;">
+                        <a class="btn btn-default" href="/admin#/board/{{boardPost.CategoryId}}/list">목록</a>
+                        <a class="btn btn-default" id="modify" href="/admin#/board/{{boardPost.CategoryId}}/modify/{{boardPost.id}}">수정</a>
+                        <a class="btn btn-default" id="delete" ng-click="delete(boardPost.id)">삭제</a>
+                        <a class="btn btn-success" href="/admin#/board/{{boardPost.CategoryId}}/write">글쓰기</a>
+                    </div>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>   

@@ -1,0 +1,78 @@
+<!-- video -->
+<link rel="stylesheet" href="/css/video_main_CJH.css">
+<script src="/js/video_main_CJH.js"></script>
+
+<!-- 공통 header-->
+<div class="sb-site-container">
+	<div class="boxed">
+		<div class="col-md-12 container">
+			<form role="form" class="form-horizontal" ng-init ="initView()">
+				<table class="table">
+					<colgroup>
+                        <col style="width: 12%">
+                        <col style="width: 25%">
+                        <col style="width: 13%">
+                        <col style="width: 25%">
+                        <col style="width: 15%">
+                        <col style="width: 10%">
+                    </colgroup>
+					<tr>
+						<td nowrap>제목</td>
+						<td colspan="3">{{videoPost.title}}</td>
+						<td nowrap>게시물 번호</td>
+						<td>{{videoPost.id}}</td>
+					</tr>
+					<tr>
+						<td nowrap>작성자</td>
+						<td>{{videoPost.author}}</td>
+						<td nowrap>작성시간</td>
+                        <td>{{videoPost.time}}</td>
+						<td nowrap>조회</td>
+                        <td>{{videoPost.cnt}}</td>
+					</tr>
+					<tr>
+						<td nowrap>첨부 파일</td>
+						<td colspan="5">
+							<a style="color: black" class="underline-on-hover" ng-click="download(videoPost.files[0].path)"><i class="fa fa-file-o"></i> &nbsp;<b>{{videoPost.files[0].file_name}} ({{videoPost.files[0].size}})</b></a>
+            			</td>
+            		</tr>
+					<tr><td colspan="6"></td></tr>
+                </table>
+			
+				<div class="form-group-separator"></div>
+				<div class="form-group" style="padding-left:15px;padding-right:15px;">
+				    <videogular vg-theme="config.theme.url">
+				        <vg-media vg-src="config.sources" vg-preload="config.preload"></vg-media>
+						<vg-controls>
+						    <vg-play-pause-button></vg-play-pause-button>
+						    <vg-time-display>{{ currentTime | date:'HH:mm:ss':'+0000' }}</vg-time-display>
+							<vg-scrub-bar>
+						    	<vg-scrub-bar-current-time></vg-scrub-bar-current-time>
+						    </vg-scrub-bar>
+						    <vg-time-display>{{ timeLeft | date:'HH:mm:ss':'+0000' }}</vg-time-display>
+						    <vg-volume>
+						    	<vg-mute-button></vg-mute-button>
+							    	<vg-volume-bar></vg-volume-bar>
+						    </vg-volume>
+						    <vg-fullscreen-button></vg-fullscreen-button>
+					    </vg-controls>
+						<vg-overlay-play></vg-overlay-play>
+					    <vg-buffering></vg-buffering>
+				    </videogular>
+				</div>
+				<div class="form-group" style="padding-left:15px;padding-right:15px;">
+					<div ng-bind-html="videoPost.contents"></div>
+				</div>
+
+				<div class="form-group">
+					<div class="col-md-12" style="text-align:right;">
+						<a class="btn btn-default" href="/admin#/video/{{videoPost.CategoryId}}/list">목록</a>
+						<a class="btn btn-default" id="modify" href="/admin#/video/{{videoPost.CategoryId}}/modify/{{videoPost.id}}">수정</a>
+						<a class="btn btn-default" id="delete" ng-click="delete(videoPost.id)">삭제</a>
+						<a class="btn btn-success" href="/admin#/video/{{videoPost.CategoryId}}/write">글쓰기</a>
+					</div>
+				</div>
+			</form>
+		</div>
+	</div>
+</div>

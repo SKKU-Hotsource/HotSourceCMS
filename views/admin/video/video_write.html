@@ -1,0 +1,39 @@
+<script type="text/javascript" src="/js/board/ckeditor/ckeditor.js"></script>
+
+<div class="sb-site-container">
+	<div class="boxed">
+		<div class="container">
+			<div class="row">
+				<div class="col-md-9">
+					<section class="css-section">
+						<h2 class="section-title no-margin-top">글쓰기</h2>
+						<div class = "container-fluid" width = "100%">
+							<form accept-charset="UTF-8" class = "form horizontal" ng-submit="uploadPost(videoFile)" name="myForm">
+								<div class = "form-group">
+									<label class ="col-sm-2" style ="text-align:center">제 목</label>
+									<div class ="col-sm-10" >
+										<input type ="text" class = "form-control" ng-model = "title" name = "title"  required/>
+									</div>
+								</div>
+								<div class = "form-group">
+									<label class = "col-sm-2 control-label" style ="text-align:center">동영상</label>
+									<div class = "col-sm-10" style = "margin-top :5px">
+										<input type ="file"  ngf-select ng-model="videoFile" ngf-multiple="false" name="file" accept="video/*" ngf-max-size="1GB" required>
+										 ※ mkv파일은 선택할 수 없습니다.
+									</div>
+								</div>
+								<div class ="col-sm-12" style = "margin-top :20px">
+									<textarea ck-editor ng-model = "contents" name = "contents"></textarea>
+                                	<span class="progress" ng-show="videoFile.progress >= 0">
+	                                    <div style="width:{{videoFile.progress}}%" ng-bind="videoFile.progress + '%'" class="ng-binding"></div>
+	                                </span>
+									<button style ="float:right; margin-top : 10px" class="btn btn-info" type="submit" >Submit</button>
+								</div>
+							</form>
+						</div>
+					</section>
+				</div>
+			</div>
+		</div>
+	</div> 
+</div>

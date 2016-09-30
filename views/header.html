@@ -1,0 +1,22 @@
+<script type="text/javascript-lazy" src="/assets/js/jquery.min.js"></script>
+<script type="text/javascript-lazy" src="/assets/js/jquery.cookie.js"></script>
+<script type="text/javascript-lazy" src="/assets/js/jquery.bxslider.min.js"></script>
+<script type="text/javascript-lazy" src="/assets/js/jquery.mixitup.min.js"></script>
+<script type="text/javascript-lazy" src="/assets/js/jquery.matchHeight-min.js"></script>
+<script type="text/javascript-lazy" src="/assets/js/wow.min.js"></script>
+<script type="text/javascript-lazy" src="/assets/js/DropdownHover.js"></script>
+<script type="text/javascript-lazy" src="/assets/js/holder.js"></script>
+
+<header class="main-header animated fadeIn fadeInDown">
+        <div class="container" ng-controller="HeaderController">
+            <h1 class="col-md-3 page-title">{{res[res.length-1].title}}</h1>
+            <ol class="hidden-xs hidden-sm breadcrumb pull-right">          
+                    <li ng-repeat="re in res" ng-init="len = res.length">
+                        <a ng-click="myFunc()" href="main#/{{re.typeString}}/{{re.id}}" ng-if="re.title && re.type != 0">{{re.title}}</a>
+                        <a ng-if="re.title && re.type == 0">{{re.title}}</a>
+                    </li>             
+            </ol>
+        </div>
+</header>
+
+<script src="/javascripts/controllers/HeaderCtrl.js"></script>

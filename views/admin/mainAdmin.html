@@ -1,0 +1,72 @@
+<!-- <script type="text/javascript-lazy" src="/assets/js/jquery.min.js"></script>
+<script type="text/javascript-lazy" src="/assets/js/jquery.cookie.js"></script>
+<script type="text/javascript-lazy" src="/assets/js/jquery.bxslider.min.js"></script>
+<script type="text/javascript-lazy" src="/assets/js/jquery.mixitup.min.js"></script>
+<script type="text/javascript-lazy" src="/assets/js/jquery.matchHeight-min.js"></script>
+<script type="text/javascript-lazy" src="/assets/js/wow.min.js"></script>
+<script type="text/javascript-lazy" src="/assets/js/DropdownHover.js"></script>
+<script type="text/javascript-lazy" src="/assets/js/holder.js"></script>
+<script type="text/javascript" src="/js/board/ckeditor/ckeditor.js"></script> -->
+
+<div class = "col-md-12">
+    <h2 class="section-title no-margin-top">Main Administration</h2>
+    <div class="panel panel-primary">
+        <div class="panel-heading">Controls</div>
+        <div class="panel-body">
+            <section>
+                <form accept-charset="UTF-8" class="form horizontal" ng-submit="updateMain(mainLogo)" name="myForm">
+                    <div class="form-group col-md-12">
+                        <div class="col-md-5">
+                            <label for="mainLogo">Main Logo</label>
+                            <input type ="file" ngf-select ng-model="mainLogo" ngf-multiple="false" name="file" accept="image/*" ngf-max-size="20MB" id="mainLogo">
+                        </div>
+                        <div class="col-md-7">
+                            <img style="width:50px; height:50px;" ng-src="/{{logoFile}}" ng-if="logoFile"/>
+                        </div>
+                    </div>
+                    <div class="form-group col-md-12">
+                        <div class="col-md-3">
+                            <label for="title">Title</label>
+                        </div>
+                        <div class="col-md-9 ">
+                            <input type="text" ng-model="title">
+                        </div>
+                    </div>
+                    <div class="form-group col-md-12">
+                        <div class="col-md-3">
+                            <label for="useSlide">Use Slide</label><br>
+                        </div>
+                        <div class="col-md-9">
+                            <input type="checkbox" ng-model="useSlide">
+                        </div>
+                    </div>
+                    <div class="form-group col-md-12">
+                        <div class="col-md-3">
+                            <label for="leftBoard">Left Board</label><br>
+                        </div>
+                        <div class="col-md-9">
+                            <select id="leftBoard" ng-model="leftBoard">
+                                <option value="">사용안함</option>
+                                <option ng-repeat="board in boardList" value="{{board.id}}">{{board.category_name}}</option>
+                            </select>
+                        </div>
+                    </div>
+                    <div class="form-group col-md-12">
+                        <div class="col-md-3">
+                            <label for="rightBoard">Right Board</label><br>
+                        </div>
+                        <div class="col-md-6">
+                            <select id="rightBoard" ng-model="rightBoard">
+                                <option value="">사용안함</option>
+                                <option ng-repeat="board in boardList" value="{{board.id}}">{{board.category_name}}</option>
+                            </select>
+                        </div>
+                    </div>
+                    <div class="form-group col-md-12">
+                        <button type="submit" class="btn btn-ar btn-primary">Submit</button>
+                    </div>
+                </form>
+            </section>
+        </div>
+    </div>
+</div>

@@ -1,0 +1,41 @@
+{
+    "development": {
+        "title": "",            //service name
+        "port": 3000,
+        "db": {
+            "host": "",         //db host
+            "username": "",     //db user name
+            "password": "",     //db password
+            "database": "",     //db database name
+            "dialect": "mysql",
+            "logging": true,
+	        "multipleStatements": true,
+            "timezone": "+09:00",
+            "upload_path": "webdata/"
+        },
+        "email" : {
+            "id" : "",          //admin email id
+            "password" : ""     //admin email pw
+        }
+    },
+    "production": {
+        "title": "",
+        "port": ,
+        "db": {
+            "host": "127.0.0.1",
+            "port": "3306",
+            "username": "",
+            "password": "",
+            "database": "",
+            "dialect": "mysql",
+            "logging": true,
+            "multipleStatements": true,
+            "timezone": "+09:00",
+            "upload_path": "webdata/"
+        },
+        "email" : {
+            "id" : "",
+            "password" : ""
+        }
+    }
+}

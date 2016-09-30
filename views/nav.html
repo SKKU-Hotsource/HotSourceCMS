@@ -1,0 +1,74 @@
+<script type="text/javascript-lazy" src="/assets/js/jquery.min.js"></script>
+<script type="text/javascript-lazy" src="/assets/js/jquery.cookie.js"></script>
+<script type="text/javascript-lazy" src="/assets/js/jquery.bxslider.min.js"></script>
+<script type="text/javascript-lazy" src="/assets/js/jquery.mixitup.min.js"></script>
+<script type="text/javascript-lazy" src="/assets/js/jquery.matchHeight-min.js"></script>
+<script type="text/javascript-lazy" src="/assets/js/wow.min.js"></script>
+<script type="text/javascript-lazy" src="/assets/js/DropdownHover.js"></script>
+<script type="text/javascript-lazy" src="/assets/js/holder.js"></script>
+
+<!-- Preloader -->
+<div ng-controller="NavListController">
+  <nav class="navbar navbar-static-top navbar-default yamm navbar-static-top" role="navigation" id="header" >
+      
+      <div class="container">       
+          <div class="navbar-header">
+              <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">
+                  <span class="sr-only">Toggle navigation</span>
+                  <i class="fa fa-bars"></i>
+              </button>
+              <a id="ar-brand" class="navbar-brand" href="/main#/" back-img={{$root.mainAdmin.mainLogo}}>{{$root.mainAdmin.title}}</a>
+          </div> <!-- navbar-header -->
+
+          <a class = "btn2 pull-right" href="/main#/registry" ng-if="!session">Register</a>
+          <a class = "btn2 pull-right" href="/main#/mypage" ng-if="session">Mypage</a>
+          <a class = "btn2 pull-right" href="/main#/login" ng-if="!session">Login</a>
+          <a class = "btn2 pull-right" href="/main#/" ng-controller="loginCtrl" ng-click="logout()" ng-if="session">Logout</a>
+          <a class = "btn2 pull-right" href="/admin#/" ng-if="session.type==0">Admin</a> 
+          <a class = "btn2 pull-right" href="/main#/">Home</a> 
+          <br style="line-height: 250%;">
+
+          <main-nav nav-list="navList"></main-nav>
+      </div><!-- container -->
+  </nav>
+</div>
+
+<style>
+.btn2 {
+  background: none;
+  /*background-image: -webkit-linear-gradient(top, #3498db, #2980b9);
+  background-image: -moz-linear-gradient(top, #3498db, #2980b9);
+  background-image: -ms-linear-gradient(top, #3498db, #2980b9);
+  background-image: -o-linear-gradient(top, #3498db, #2980b9);
+  background-image: linear-gradient(to bottom, #3498db, #2980b9);*/
+  font-family: Arial;
+  color: #000000;
+  font-size: 20px;
+  /*background: #3498db;*/
+  /*padding: 10px 20px 10px 20px;*/
+  text-decoration: underline;
+  margin-bottom:10px;
+}
+
+
+.btn2{display:inline-block;padding:6px 12px;margin-bottom:0;font-size:14px;font-weight:400;line-height:1.42857143;text-align:center;white-space:nowrap;vertical-align:middle;-ms-touch-action:manipulation;touch-action:manipulation;cursor:pointer;-webkit-user-select:none;-moz-user-select:none;-ms-user-select:none;user-select:none;background-image:none;border:1px solid transparent;border-radius:4px
+}
+.btn2:hover {
+  background: none;
+  border-color: transparent;
+  /*background: #3cb0fd;*/
+  /*background-image: -webkit-linear-gradient(top, #3cb0fd, #3498db);
+  background-image: -moz-linear-gradient(top, #3cb0fd, #3498db);
+  background-image: -ms-linear-gradient(top, #3cb0fd, #3498db);
+  background-image: -o-linear-gradient(top, #3cb0fd, #3498db);
+  background-image: linear-gradient(to bottom, #3cb0fd, #3498db);*/
+  text-decoration: none;
+
+}
+
+.main-header .breadcrumb a.aa:hover{
+    text-decoration: none;
+    border-bottom: none;
+    margin-bottom:0;
+}
+</style>

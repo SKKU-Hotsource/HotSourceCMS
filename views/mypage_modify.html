@@ -1,0 +1,72 @@
+<script type="text/javascript-lazy" src="/assets/js/jquery.min.js"></script>
+<script type="text/javascript-lazy" src="/assets/js/jquery.cookie.js"></script>
+<script type="text/javascript-lazy" src="/assets/js/jquery.bxslider.min.js"></script>
+<script type="text/javascript-lazy" src="/assets/js/jquery.mixitup.min.js"></script>
+<script type="text/javascript-lazy" src="/assets/js/jquery.matchHeight-min.js"></script>
+<script type="text/javascript-lazy" src="/assets/js/wow.min.js"></script>
+<script type="text/javascript-lazy" src="/assets/js/DropdownHover.js"></script>
+<script type="text/javascript-lazy" src="/assets/js/holder.js"></script>
+
+<style>
+    .center-block{
+        max-width: 700px !important;
+    }
+</style>
+
+<div ng-include="'/views/header.html'"></div>
+
+<div class = "container" ng-init="info()">
+    <div class="center-block">
+        <div class="col-md-12">
+            <section class="css-section">
+                <h2 class="section-title no-margin-top">이메일 변경</h2>
+                <div class="panel panel-primary">
+                    <div class="panel-heading">이메일 변경</div>
+                    <div class="panel-body">
+                        <form role="form" name="Email_changing" id="Email_changing" ng-submit="emailSubmit()">
+                            <div class="form-group">
+                                <label for="exampleInputEmail1">현재 이메일</label>
+                                <span> &nbsp;&nbsp;&nbsp;&nbsp; {{email}} </span>
+                          </div>
+                          <div class="form-group">
+                              <label for="InputEmail">새로운 이메일</label>
+                              <input type="email" class="form-control" ng-model="new_email" required>
+                          </div>
+                          <div class="form-group">
+                            <label for="exampleInputPassword1">비밀번호 확인</label>
+                            <input type="password" class="form-control" ng-model="password" required>
+                          </div>
+                          <button type="submit" class="btn btn-ar btn-primary">확인</button>
+                        </form>
+                    </div>
+                </div> <!-- panel panel-primary -->
+            </section>
+        </div>
+        <br>
+        <div class="col-md-12">
+            <section class="css-section">
+                <h2 class="section-title no-margin-top">비밀번호 변경</h2>
+                <div class="panel panel-primary">
+                    <div class="panel-heading">비밀번호 변경</div>
+                    <div class="panel-body">
+                        <form role="form" name="password_changing" id="password_changing" ng-submit="passwordSubmit()">
+                            <div class="form-group">
+                              <label for="password">현재 비밀번호</label>
+                              <input type="password" class="form-control" id="password" ng-model="password" required>
+                            </div>
+                            <div class="form-group">
+                              <label for="exampleInputPassword1">새로운 비밀번호</label>
+                              <input type="password" class="form-control" id="exampleInputPassword1" ng-model="new_password" required>
+                            </div>
+                            <div class="form-group">
+                                <label for="exampleInputPassword1">새로운 비밀번호 확인</label>
+                                <input type="password" class="form-control" id="exampleInputPassword1" ng-model="re_new_password" required>
+                            </div>
+                            <button type="submit" class="btn btn-ar btn-primary">확인</button>
+                        </form>
+                    </div>
+                    </div> <!-- panel panel-primary -->
+            </section>
+        </div>
+    </div>
+  </div>

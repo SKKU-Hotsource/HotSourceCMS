@@ -1,0 +1,44 @@
+<style>
+	.dl-horizontal dt {
+		width:120px;
+	}
+	.dl-horizontal dd {
+		margin-left:140px;
+	}
+</style>
+<div ng-include="'/views/header.html'"></div>
+	<div class="container">
+    	<div class="row ">
+    		<!-- Side bar -->
+	        <div ng-include="'/views/sidebar.html'"></div>
+			<div class="col-md-9" ng-init="initPaper()">
+				<div ng-repeat="paper in paperList">
+					<h3 class="section-title no-margin-top"><b>{{paper.year}}</b></h3>
+					<h4 class="right-line"><b>International</b></h4>
+					<dl class="dl-horizontal">
+					    <dt>Conference</dt>
+					    <dd>
+				    		<main-paper paper-list="paper.international.conference"></main-paper>
+					    </dd>
+					</dl>
+					<dl class="dl-horizontal">
+					    <dt>Journal</dt>
+					    <dd>
+					    	<main-paper paper-list="paper.international.journal"></main-paper>
+					    </dd>
+					</dl>
+					<h4 class="right-line"><b>Domestic</b></h4>
+					<dl class="dl-horizontal">
+					    <dt>Conference</dt>
+					    <dd>
+					    	<main-paper paper-list="paper.domestic.conference"></main-paper>
+					    </dd>
+					</dl>
+					<dl class="dl-horizontal">
+					    <dt>Journal</dt>
+					    <dd>
+					    	<main-paper paper-list="paper.domestic.journal"></main-paper>
+						</dd>
+					</dl>
+				</div>
+			</div>

@@ -1,0 +1,23 @@
+<script type="text/javascript" src="/js/board/ckeditor/ckeditor.js"></script>
+
+<div class="sb-site-container" ng-init="initInfoModify()">    
+    <div class="boxed">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-9">
+                    <section class="css-section">
+                        <h2 class="section-title no-margin-top">수정하기</h2>
+                        <div class = "container-fluid" width = "100%" padding-left = "0px" padding-right ="0px">
+                            <form accept-charset="UTF-8" class = "form horizontal" ng-submit="updatedInfo()" name="myForm">
+                                <div class ="col-sm-12">
+                                    <textarea id="text_editor" ck-editor ng-model = "contents" name = "contents"></textarea>
+                                    <button  style ="float:right; margin-top : 10px" class="btn btn-info" type="submit">Submit</button>
+                                </div>
+                            </form>
+                        </div>
+                    </section>
+                </div>
+            </div>
+        </div>
+    </div> <!-- boxed -->
+</div> <!-- sb-site -->

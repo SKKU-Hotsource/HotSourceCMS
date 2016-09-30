@@ -1,0 +1,69 @@
+<link rel="stylesheet" href="/css/video_main_CJH.css">
+<script src="/js/video_main_CJH.js"></script>
+
+<div ng-include="'/views/header.html'"></div>
+<div class="sb-site-container">
+	<div class="boxed">
+		<div class="container">
+			<form role="form" class="form-horizontal" ng-init ="initView()">
+			    <table class="table">
+      				<colgroup>
+                        <col style="width: 12%">
+                        <col style="width: 25%">
+                        <col style="width: 13%">
+                        <col style="width: 25%">
+                        <col style="width: 15%">
+                        <col style="width: 10%">
+                    </colgroup>
+        			<tr>
+						<td>제목</td>
+						<td nowrap>제목</td>
+						<td colspan="3">{{videoPost.title}}</td>
+						<td nowrap>게시물 번호</td>
+						<td>{{videoPost.id}}</td>
+					</tr>
+  					<tr>
+						<td nowrap>작성자</td>
+						<td>{{videoPost.author}}</td>
+						<td nowrap>작성시간</td>
+                        <td>{{videoPost.time}}</td>
+						<td nowrap>조회</td>
+                        <td>{{videoPost.cnt}}</td>
+  					</tr>
+  					<tr><td colspan="6"></td></tr>
+				</table>
+
+				<div class="form-group" style="padding-left:15px;padding-right:15px;">
+			    	<div class="videogular-container">
+			        	<videogular vg-theme="config.theme.url">
+			            	<vg-media vg-src="config.sources" vg-preload="config.preload"></vg-media>
+			            	<vg-controls>
+			                	<vg-play-pause-button></vg-play-pause-button>
+			                	<vg-time-display>{{ currentTime | date:'HH:mm:ss':'+0000' }}</vg-time-display>
+			                	<vg-scrub-bar>
+				                    <vg-scrub-bar-current-time></vg-scrub-bar-current-time>
+			                	</vg-scrub-bar>
+			                	<vg-time-display>{{ timeLeft | date:'HH:mm:ss':'+0000' }}</vg-time-display>
+			                	<vg-volume>
+				                    <vg-mute-button></vg-mute-button>
+			                    	<vg-volume-bar></vg-volume-bar>
+			                	</vg-volume>
+			                	<vg-fullscreen-button></vg-fullscreen-button>
+			            	</vg-controls>
+			            	<vg-overlay-play></vg-overlay-play>
+			            	<vg-buffering></vg-buffering>
+			        	</videogular>
+			    	</div>
+				</div>
+				<div class="form-group" style="padding-left:15px;padding-right:15px;">
+					<div ng-bind-html="videoPost.contents"></div>
+				</div>
+				<div class="form-group">
+					<div class="col-md-12" style="text-align:right;">
+						<a class="btn btn-default" href="/main#/video/{{videoPost.CategoryId}}/list">목록</a>
+					</div>
+				</div>
+			</form>
+		</div>
+	</div>
+</div>

@@ -1,0 +1,62 @@
+<script type="text/javascript-lazy" src="/assets/js/jquery.min.js"></script>
+<script type="text/javascript-lazy" src="/assets/js/jquery.cookie.js"></script>
+<script type="text/javascript-lazy" src="/assets/js/jquery.bxslider.min.js"></script>
+<script type="text/javascript-lazy" src="/assets/js/jquery.mixitup.min.js"></script>
+<script type="text/javascript-lazy" src="/assets/js/jquery.matchHeight-min.js"></script>
+<script type="text/javascript-lazy" src="/assets/js/wow.min.js"></script>
+<script type="text/javascript-lazy" src="/assets/js/DropdownHover.js"></script>
+<script type="text/javascript-lazy" src="/assets/js/holder.js"></script>
+
+<div class="col-md-12 sb-site-container">
+    <div ng-include="'/views/header.html'"></div>
+    <div class="container animated fadeInDown">
+        <div class="row" >
+            <!-- Side bar -->
+            <div ng-include="'/views/sidebar.html'"></div>
+            <div class="col-md-9">
+                <form role="form" class="form-horizontal" ng-init ="initView()">
+                    <table class="table">
+                        <colgroup>
+                            <col style="width: 12%">
+                            <col style="width: 25%">
+                            <col style="width: 13%">
+                            <col style="width: 25%">
+                            <col style="width: 15%">
+                            <col style="width: 10%">
+                        </colgroup>
+                        <tr>
+                            <td nowrap>제목</td>
+                            <td colspan="3">{{boardPost.title}}</td>
+                            <td nowrap>게시물 번호</td>
+                            <td>{{boardPost.id}}</td>
+                        </tr>
+                        <tr>
+                            <td nowrap>작성자</td>
+                            <td>{{boardPost.author}}</td>
+                            <td nowrap>작성시간</td>
+                            <td>{{boardPost.time}}</td>
+                            <td nowrap>조회</td>
+                            <td>{{boardPost.cnt}}</td>
+                        </tr>
+                        <tr>
+                            <td nowrap>첨부 파일</td>
+                            <td colspan="5">
+                                <a class="underline-on-hover" style="color: black" ng-click="download(boardPost.files[0].path)" ng-if="boardPost.files[0]"><i class="fa fa-file-o"></i> &nbsp;<b>{{boardPost.files[0].file_name}} ({{boardPost.files[0].size}})</b></a>
+                            </td>
+                        </tr>
+                        <tr><td colspan="6"></td></tr>
+                    </table>
+                    <div class="form-group-separator"></div>
+                    <div class="form-group" style="padding-left:15px;padding-right:15px;">
+                        <div ng-bind-html="boardPost.contents"></div>
+                    </div>
+                    <div class="form-group">
+                        <div class="col-md-12" style="text-align:right;">
+                            <a class="btn btn-default" href="/main#/board/{{boardPost.CategoryId}}/list">목록</a>
+                        </div>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>

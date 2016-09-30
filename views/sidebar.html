@@ -1,0 +1,25 @@
+<script type="text/javascript-lazy" src="/assets/js/jquery.min.js"></script>
+<script type="text/javascript-lazy" src="/assets/js/jquery.cookie.js"></script>
+<script type="text/javascript-lazy" src="/assets/js/jquery.bxslider.min.js"></script>
+<script type="text/javascript-lazy" src="/assets/js/jquery.mixitup.min.js"></script>
+<script type="text/javascript-lazy" src="/assets/js/jquery.matchHeight-min.js"></script>
+<script type="text/javascript-lazy" src="/assets/js/wow.min.js"></script>
+<script type="text/javascript-lazy" src="/assets/js/DropdownHover.js"></script>
+<script type="text/javascript-lazy" src="/assets/js/holder.js"></script>
+
+<div class="col-md-3" ng-controller="SlideNavController">
+    <ul class="sidebar-nav ">
+        <li><a class="aa aaa">{{titlenow}}</a></li><hr>
+        <li ng-repeat="list in lists">     
+            <a ng-init ="list.x = list.id == idnow ? true : false" ng-click="list.x=list.x!=true" ng-class="list.x ? '' : 'collapsed'" ng-if="list.nodes.length > 0"> {{list.title}}</a>
+            <a ng-init ="list.x = null" href="main#/{{list.typeString}}/{{list.id}}/list" ng-click="list.x=list.x!=true" ng-class="0 ? 'collapsed' : 'collapsed'" class="aa" ng-if="list.nodes.length < 1 && list.type != 0"> {{list.title}}</a>
+            <a ng-init ="list.x = null" ng-click="list.x=list.x!=true" ng-class="0 ? 'collapsed' : 'collapsed'" class="aa" ng-if="list.nodes.length < 1 && list.type == 0"> {{list.title}}</a>
+            
+
+            <ul ng-show="list.x" class="menu-submenu list-unstyled">
+                <li ng-repeat="lis in list.nodes"><a href="main#/{{lis.typeString}}/{{lis.id}}/list" ng-if="lis.type != 0">{{lis.title}}</a></li>
+                <li ng-repeat="lis in list.nodes"><a ng-if="lis.type == 0">{{lis.title}}</a></li>
+            </ul>
+        </li>
+    </ul>
+</div>

@@ -1,0 +1,91 @@
+<style type="text/css">
+    div.panel-body > form > div{
+        padding-bottom: 20px;
+    }
+</style>
+
+
+<div class="col-md-12 container" ng-init="userList()" >
+    검색:
+    <input type="text" value="title" ng-model="searchKeyword" placeholder="Search for..." required  />
+    
+    <table class="table table-striped" ng-model="list"  >
+        <thead>
+            <tr>
+                <th nowrap>
+                    <label for="cb-select-all-1">모두 선택</label>
+                    <input id="cb-select-all-1" type="checkbox" ng-change="checkAll(checkedAll)" ng-model="checkedAll" />
+                </th>
+
+                    <th scope="col" nowrap><span ng-click="sortBy('title')">아이디</span></th>
+                    <th scope="col" nowrap><span ng-click="sortBy('author')">이름</span></th>
+                    <th scope="col" nowrap><span ng-click="sortBy('email')">이메일</span></th>
+                    <th scope="col" nowrap><span ng-click="sortBy('type')">Type</span></th>
+            </tr>
+        </thead>
+        <tbody id="the-list">
+            <tr ng-repeat="user in list | filter:searchKeyword | offset: currentPage*itemsPerPage | limitTo: itemsPerPage">
+                <td scope="row">
+                    <input type="checkbox" ng-change="checkItem(user, user.selected)" ng-model="user.selected" />  
+                </td>
+                <td>
+                    <a data-toggle="modal" data-target="#myModal" ng-click="userInfor(user)">{{user.user_id}}</a>
+                </td>
+                <td>{{user.user_name}}</td>
+                <td>{{user.email}}</td>
+                <td>{{user.type}}</td>
+            </tr>
+        </tbody>
+    </table>
+    <div class="form-group" >
+        <div class="col-sm-8" align="right" style="float:right;margin:10px 0px 0px 30px;">
+            <a class="btn btn-default" ng-click="deleteSelect()">선택삭제</a>
+        </div>
+    </div>
+    <div class ="form-group">
+        <ul class="pagination pagination-border">
+            <li><a ng-click = "prevPage()">« Previous</a></li>
+            <li><a ng-repeat="n in range(ret)" ng-click="setPage(n)" href="admin#/user"> {{n+1}} </a></li>
+            <li><a ng-click = "nextPage()">Next »</a></li>
+        </ul>
+    </div>
+</div>
+
+<div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true" ng-model="user.selected">
+        <div class="modal-dialog">
+            <div class="modal-content" > 
+                <div class="modal-body" ng-init="modify">
+                    <div class="panel panel-primary">
+                        <div class="panel panel-heading">ID: {{selfId}}</div>
+                        <div class="panel-body">
+                            <form role="form">
+                                <div class="form-group">  
+                                    <label class="col-md-3" for="user_name">이름 :</label>
+                                    <span class="col-md-9"><input type="text" value="title" ng-model="selfName"></span>
+                                </div>
+                                <div class="form-group">  
+                                    <label class="col-md-3" for="passowrd">패스워드 :</label>
+                                    <span class="col-md-9"><input type="text" value="title" ng-model="selfPassword"></span>
+                                </div>
+                                <div class="form-group">  
+                                    <label class="col-md-3" for="user_email">이메일주소 :</label>
+                                    <span class="col-md-9"><input type="text" value="title" ng-model="selfEmail"></span>
+                                </div>
+                                <div class="form-group">  
+                                    <label class="col-md-3" for="type">Type :</label>
+                                    <span class="col-md-9">  
+                                        <select name="type" ng-model="selfType">
+                                            <option value="0">관리자</option>
+                                            <option value="1">일반 사용자</option>
+                                        </select>
+                                    </span>  
+                                </div>
+                                <a class="btn btn-ar btn-primary" ng-click="modify()">수정</a>
+                                <a class="btn btn-ar btn-warning" ng-click="delete()">삭제</a>     
+                            </form>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>

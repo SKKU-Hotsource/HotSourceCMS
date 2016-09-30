@@ -1,0 +1,6 @@
+<div>
+    <h3 class="no-margin-top">{{boardName}}</h3>
+    <ul class="list-line" >
+        <li ng-repeat="boardPost in boardPostList | orderBy:'-time' | limitTo:5"><a href="main#/board/{{boardPost.categoryId}}/view/{{boardPost.id}}">{{boardPost.time | date:'MM.dd'}}&nbsp;{{boardPost.title}}</a></li>
+    </ul>
+</div>

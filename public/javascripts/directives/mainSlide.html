@@ -1,0 +1,56 @@
+<script type="text/javascript-lazy" src="/assets/js/jquery.min.js"></script>
+<script type="text/javascript-lazy" src="/assets/js/jquery.cookie.js"></script>
+<script type="text/javascript-lazy" src="/assets/js/jquery.bxslider.min.js"></script>
+<script type="text/javascript-lazy" src="/assets/js/jquery.mixitup.min.js"></script>
+<script type="text/javascript-lazy" src="/assets/js/jquery.matchHeight-min.js"></script>
+<script type="text/javascript-lazy" src="/assets/js/wow.min.js"></script>
+<script type="text/javascript-lazy" src="/assets/js/DropdownHover.js"></script>
+<script type="text/javascript-lazy" src="/assets/js/holder.js"></script>
+<style>
+  .indicator_design{
+    border-color : rgba(0,0,0, 0.5)!important;
+    background-color : rgb(255,255,255)!important;
+  }
+</style>
+
+<section class="wrap-hero margin-bottom animated fadeInDown">
+    <div id="carousel-example-ny" class="carousel slide" data-ride="carousel" data-interval="9000">
+        <!-- Indicators -->
+        <ol class="carousel-indicators">
+            <li data-target="#carousel-example-ny" class ="active indicator_design" data-slide-to="{{slides[0].order}}" style="margin-left:5px"></li><li data-target="#carousel-example-ny" class ="indicator_design" ng-repeat = "slide in slides.slice(1)" data-slide-to ="{{slide.order}}" style="margin-left:5px"></li>
+        </ol>
+        <!-- Wrapper for slides -->
+        <div class="carousel-inner" role="listbox" >
+            <div class="item active" >
+                  <a href = "{{slidePosts[0].path}}"><image ng-src = "{{slidePosts[0].path}}"  id ="simage"></a>
+            </div>
+            <div class="item" ng-repeat = "slidePost in slidePosts.slice(1)">
+              <a href = "{{slidePost.link}}"><image ng-src = "{{slidePost.path}}"  id ="simage" ></a>
+            
+              <style type = "text/css">
+                
+                .carousel-inner {
+                    overflow:hidden;
+                    /*width:100%;*/
+                    /*position: center;*/
+                    height: 400px;
+                     background-color:#f4f4f4;
+                }
+
+                 #simage {
+                      margin-left:auto;
+                      margin-right:auto;
+                      overflow:hidden;
+                      /*width : 100%;*/
+                      height : 400px;
+                      position: center;
+                      background-color:#333;
+                }
+              </style>
+            </div>
+          </div>
+        <!-- Controls -->
+        <a class="left carousel-control" data-target="#carousel-example-ny" data-slide="prev" role= "button"></a>
+        <a class="right carousel-control" data-target="#carousel-example-ny" data-slide="next" role = "button"></a>
+    </div>
+</section> <!-- carousel -->
