@@ -35,7 +35,7 @@
 
 <div ng-repeat="popup in popupList" id="popup{{$index}}" class="panel panel-default" style="z-index: 100; position: absolute; top: {{100+$index*50}}px; left: {{100+$index*50}}px;">
     <div class="panel-body" style="margin:0; padding:0; width:{{popup.width}}px; height:{{popup.height}}px;">
-        <a href="{{popup.path}}"><image src="{{popup.image_src}}"></image></a>
+        <a href="{{popup.path}}"><image src="{{popup.image_src}}" style="margin:0; padding:0; width:{{popup.width}}px; height:{{popup.height}}px;"></image></a>
     </div>
     <div class="panel-footer">
         <div class="form-inline">

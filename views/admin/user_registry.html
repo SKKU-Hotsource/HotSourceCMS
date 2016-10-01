@@ -16,11 +16,10 @@
                     <label for="cb-select-all-1">모두 선택</label>
                     <input id="cb-select-all-1" type="checkbox" ng-change="checkAll(checkedAll)" ng-model="checkedAll" />
                 </th>
-
-                    <th scope="col" nowrap><span ng-click="sortBy('title')">아이디</span></th>
-                    <th scope="col" nowrap><span ng-click="sortBy('author')">이름</span></th>
-                    <th scope="col" nowrap><span ng-click="sortBy('email')">이메일</span></th>
-                    <th scope="col" nowrap><span ng-click="sortBy('type')">Type</span></th>
+                <th scope="col" nowrap><span ng-click="sortBy('title')">아이디</span></th>
+                <th scope="col" nowrap><span ng-click="sortBy('author')">이름</span></th>
+                <th scope="col" nowrap><span ng-click="sortBy('email')">이메일</span></th>
+                <th scope="col" nowrap><span ng-click="sortBy('type')">Type</span></th>
             </tr>
         </thead>
         <tbody id="the-list">
