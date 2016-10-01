@@ -39,7 +39,7 @@ app.set('views', path.join(__dirname, 'views'));
 app.set('view engine', 'html');
 app.use('/views', express.static(path.join(__dirname, 'views')));
 
-// 세션 유지 3시간
+// Session maintain time : 3 hours
 app.use(session({
     secret: 'scg',
     proxy: true,

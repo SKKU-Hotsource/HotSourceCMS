@@ -1,5 +1,5 @@
 {
-  "name": "sosc",
+  "name": "HotSourceCMS",
   "version": "0.0.0",
   "private": true,
   "scripts": {
@@ -22,13 +22,11 @@
     "morgan": "~1.5.0",
     "multer": "^1.0.5",
     "mysql": "^2.6.2",
-    "ng-file-upload": "^12.0.4",
     "nodemailer": "^2.5.0",
     "sequelize": "^2.0.5",
     "sequelize-cli": "^1.5.0",
     "serve-favicon": "^2.3.0",
-    "sha256": "^0.1.1",
-    "swig": "~1.4.2"
+    "sha256": "^0.1.1"
   },
   "devDependencies": {
     "grunt": "~0.4.5",
