@@ -7,10 +7,8 @@
   "dependencies": {
     "jquery": "1.9.1 - 2",
     "angular": "^1.5.8",
-    "angular-mocks": "^1.4.0",
     "angular-animate": "^1.4.0",
     "angular-cookies": "^1.4.0",
-    "angular-resource": "^1.4.0",
     "angular-route": "^1.4.0",
     "angular-sanitize": "^1.4.0",
     "angular-touch": "^1.4.0",
@@ -27,8 +25,7 @@
     "videogular-ima-ads": "^1.4.4",
     "videogular-overlay-play": "^1.4.4",
     "videogular-poster": "^1.4.4",
-    "videogular-themes-default": "^1.4.4",
-    "angular-upload": "^1.0.12"
+    "videogular-themes-default": "^1.4.4"
   },
   "resolutions": {
     "angular": "^1.5.8"
