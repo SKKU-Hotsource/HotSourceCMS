@@ -5,33 +5,35 @@ canvas {
 }
 </style>
 <div ng-include="'/views/header.html'"></div>
+<div class="container" ng-init="initThumb()" >
+    <div class="row">
+        <div ng-include="'/views/sidebar.html'"></div>
+        <div class="col-md-9">
+            <div style= "margin-bottom:40px;" >
+                검색:
+                <input type="text" value="title" ng-model="searchKeyword" placeholder="Search for..." required  />
+               
+            </div>
+            <div class ="col-xs-6 col-md-4 thumbnail thumbnail-round" ng-repeat="video in videoList | filter:searchKeyword | orderBy:orderProperty | offset: currentPage*itemsPerPage | limitTo: itemsPerPage ">
+                <div class="img-caption-ar">
+                    <thumbnail file-type="video" source="{{video.src}}"></thumbnail>
+                    <div class="caption-ar">
+                        <div class="caption-content">
+                            <a href="/main#/video/{{categoryId}}/view/{{video.id}}" class="animated fadeInDown"><i class="fa fa-search"></i>View</a>
+                           
+                        </div>
 
-<div class="sb-site-container">
-    <div class="container" ng-init="initThumb()" >
-        <div style= "margin-bottom:40px;" >
-            검색:
-            <input type="text" value="title" ng-model="searchKeyword" placeholder="Search for..." required  />
-           
-        </div>
-	    <div class ="col-xs-6 col-md-4 thumbnail thumbnail-round" ng-repeat="video in videoList | filter:searchKeyword | orderBy:orderProperty | offset: currentPage*itemsPerPage | limitTo: itemsPerPage ">
-            <div class="img-caption-ar">
-                <thumbnail file-type="video" source="{{video.src}}"></thumbnail>
-                <div class="caption-ar">
-                    <div class="caption-content">
-                        <a href="/main#/video/{{categoryId}}/view/{{video.id}}" class="animated fadeInDown"><i class="fa fa-search"></i>View</a>
-                       
                     </div>
-
-                </div>
-		    </div>
-             <div style="text-align:center;" >{{ video.title }}</div>
-		</div>
-        <div class="form-group">
-            <ul class="pagination pagination-border" style= "padding-left: 50%" >
-                <li> <a href ng-click = "prevPage()">« Previous</a></li>
-                <li><a ng-repeat="n in range(ret)" ng-click="setPage(n)" href="main#/video/{{categoryId}}/list"> {{n+1}} </a></li>
-                <li><a href ng-click = "nextPage()">Next »</a></li>
-            </ul>
+        	    </div>
+                 <div style="text-align:center;" >{{ video.title }}</div>
+        	</div>
+            <div class="form-group">
+                <ul class="pagination pagination-border" style= "padding-left: 50%" >
+                    <li> <a href ng-click = "prevPage()">« Previous</a></li>
+                    <li><a ng-repeat="n in range(ret)" ng-click="setPage(n)" href="main#/video/{{categoryId}}/list"> {{n+1}} </a></li>
+                    <li><a href ng-click = "nextPage()">Next »</a></li>
+                </ul>
+            </div>
         </div>
     </div>
 </div>

@@ -1,7 +1,9 @@
 #uploaded file
-webdata/*.*
+webdata/
 
 
 
 *.svn-base
 .svn/
+node_modules/
+public/bower_components/

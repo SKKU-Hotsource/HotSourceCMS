@@ -1,24 +1,25 @@
 {
     "development": {
-        "title": "",            //service name
+        "title": "",            
         "port": 3000,
         "db": {
-            "host": "",         //db host
-            "username": "",     //db user name
-            "password": "",     //db password
-            "database": "",     //db database name
+            "host": "",         
+            "username": "",     
+            "password": "",     
+            "database": "",     
             "dialect": "mysql",
             "logging": true,
 	        "multipleStatements": true,
             "timezone": "+09:00",
             "upload_path": "webdata/",
             "define" : {
-            "charset": "utf8",
-            "collate": "utf8_general_ci"
+                "charset": "utf8",
+                "collate": "utf8_general_ci"
+            }
         },
         "email" : {
-            "id" : "",          //admin email id
-            "password" : ""     //admin email pw
+            "id" : "",          
+            "password" : ""     
         }
     },
     "production": {
@@ -36,8 +37,9 @@
             "timezone": "+09:00",
             "upload_path": "webdata/",
             "define" : {
-            "charset": "utf8",
-            "collate": "utf8_general_ci"
+                "charset": "utf8",
+                "collate": "utf8_general_ci"
+            }
         },
         "email" : {
             "id" : "",

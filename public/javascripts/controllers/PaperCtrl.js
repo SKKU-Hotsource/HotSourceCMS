@@ -47,12 +47,10 @@ app.controller('paperCtrl', ['$scope', '$http', '$location', '$window', '$routeP
 		$scope.submitData.CategoryId=$routeParams.CategoryId;
 		$http.post("/paper",$scope.submitData)
 			.success(function(data){
-				console.log($scope.submitData);
 				var year = new Date($scope.submitData.publish_date).toISOString().slice(0, 10).split('-')[0];
 				$scope.submitData.publish_date=new Date($scope.submitData.publish_date).toISOString().slice(0, 10);
 				for(idx in $scope.paperList) {
 					if($scope.paperList[idx].year == year) {
-						console.log($scope.submitData.count_of_origin);
 						if($scope.submitData.count_of_origin == "1") {
 							if($scope.submitData.publication_type == "1")
 								$scope.paperList[idx].international.journal.push(mkPaperStr($scope.submitData));
@@ -82,6 +80,7 @@ app.controller('paperCtrl', ['$scope', '$http', '$location', '$window', '$routeP
 						paperElmt.domestic.conference.push(mkPaperStr($scope.submitData));
 				}
 				$scope.paperList.push(paperElmt);
+				angular.element("#addModal").modal("hide");
 		});
 	}
 
@@ -101,7 +100,6 @@ app.controller('paperCtrl', ['$scope', '$http', '$location', '$window', '$routeP
 	}
 
 	$scope.modifyPaper = function(){
-		console.log($scope.modifyData);
 		$http.put("/paper/"+$routeParams.id,$scope.modifyData)
 			.success(function(data){
 				$location.path("/paper/"+$routeParams.CategoryId+"/list");
