@@ -38,7 +38,7 @@ app.controller('popupCtrl', ['$scope', '$http', '$cookies', function($scope, $ht
 		if( !confirm("정말로 삭제하시겠습니까?") )
 			return;
 
-		$http.delete("/popup").success(function(res){
+		$http.delete("/popup/"+id).success(function(res){
 			if( res.error ) {
 				alert("오류가 발생했습니다. 다시 시도해주세요.");
 				return;

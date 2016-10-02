@@ -107,8 +107,8 @@ router.post('/add', upload.single('file'), loadUser, function(req, res) {
 * @summary  :
 *   Delete the existing popup you want to delete.
 */
-router.delete('/', loadUser, function(req, res) {
-    models.Popup.findOne({where: {id: req.body.id}}).then(function (row) {
+router.delete('/:popupId', loadUser, function(req, res) {
+    models.Popup.findOne({where: {id: req.params.id}}).then(function (row) {
         if( row != null)
             row.destroy();
     });
