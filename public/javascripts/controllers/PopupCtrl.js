@@ -19,10 +19,6 @@ app.controller('popupCtrl', ['$scope', '$http', '$cookies', function($scope, $ht
 	$scope.loadPopupList = function() {
 		$http.get("/popup/list").success(function(res) {
 			$scope.popupList = res;
-			$scope.popupList.forEach(function( val ) {
-				val.startDate = new Date(val.startDate).toISOString().slice(0, 10);
-				val.endDate = new Date(val.endDate).toISOString().slice(0,10);
-			});
 		});
 	};
 
@@ -72,6 +68,13 @@ app.controller('popupAddCtrl', ['$scope', '$http', '$location', 'Upload', functi
 	*	Send the request to save new popup, and represent the result.
 	*/
 	$scope.savePopup = function() {
+		var getDateStr = function (date) {
+			var dateStr = date.getFullYear()+"-"+(date.getMonth()+1)+"-"+date.getDate();
+			return dateStr;
+		};
+		$scope.submitData.startDate = getDateStr($scope.submitData.startDate);
+		$scope.submitData.endDate = getDateStr($scope.submitData.endDate);
+
 		Upload.upload({
         	url: '/popup/add',
 			method: 'POST',
@@ -150,6 +153,12 @@ app.controller('popupModifyCtrl', ['$scope', '$http', '$routeParams', '$location
 	* 	Modify the existing popup to new values.
 	*/
 	$scope.modifyPopup = function() {
+		var getDateStr = function (date) {
+			var dateStr = date.getFullYear()+"-"+(date.getMonth()+1)+"-"+date.getDate();
+			return dateStr;
+		};
+		$scope.submitData.startDate = getDateStr($scope.submitData.startDate);
+		$scope.submitData.endDate = getDateStr($scope.submitData.endDate);
 		$http.put("/popup", {
 			id: $routeParams.popupId,
 			data: $scope.submitData
