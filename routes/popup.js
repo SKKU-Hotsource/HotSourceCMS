@@ -19,7 +19,6 @@ var _storage = multer.diskStorage({
 })
 var upload = multer({ storage: _storage }, {limits: 1024 * 1024 * 20});
 
-
 /*
 * @author   : 강성필 hwhale
 * @param    : no parameter
@@ -33,6 +32,14 @@ router.get('/list', function(req, res) {
         attributes: ['id', 'title', 'startDate', 'endDate'],
         order: 'id DESC'
     }).then(function (popupList) {
+        popupList.forEach( function (val) {
+            var getDateStr = function (date) {
+                var dateStr = date.getFullYear()+"-"+(date.getMonth()+1)+"-"+date.getDate();
+                return dateStr;
+            };
+            val.startDate = getDateStr(val.startDate);
+            val.endDate = getDateStr(val.endDate);
+        });
         res.send(popupList);
     });
 });
@@ -47,8 +54,8 @@ router.get('/list', function(req, res) {
 router.get('/today', function(req, res, next) {
     models.Popup.findAll({
         where: {
-            startDate: {$lte: models.sequelize.fn('now')},
-            endDate: {$gte: models.sequelize.fn('now')} 
+            startDate: {$lte: models.sequelize.fn('CURDATE')},
+            endDate: {$gte: models.sequelize.fn('CURDATE')} 
         }
     }).then(function(popupList) {
         res.send(popupList);
@@ -108,7 +115,7 @@ router.post('/add', upload.single('file'), loadUser, function(req, res) {
 *   Delete the existing popup you want to delete.
 */
 router.delete('/:popupId', loadUser, function(req, res) {
-    models.Popup.findOne({where: {id: req.params.id}}).then(function (row) {
+    models.Popup.findOne({where: {id: req.params.popupId}}).then(function (row) {
         if( row != null)
             row.destroy();
     });
