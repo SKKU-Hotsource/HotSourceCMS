@@ -54,8 +54,8 @@ router.get('/list', function(req, res) {
 router.get('/today', function(req, res, next) {
     models.Popup.findAll({
         where: {
-            startDate: {$lte: models.sequelize.fn('now')},
-            endDate: {$gte: models.sequelize.fn('now')} 
+            startDate: {$lte: models.sequelize.fn('CURDATE')},
+            endDate: {$gte: models.sequelize.fn('CURDATE')} 
         }
     }).then(function(popupList) {
         res.send(popupList);
